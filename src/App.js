@@ -6,6 +6,8 @@ import HTMLFlipBook from 'react-pageflip';
 
 function App() {
   const [ data, setData ] = useState(null);
+  const [ isMobile, setIsMobile ] = useState(null);
+  const [ isSmallerScreen, setIsSmallerScreen ] = useState(null); // less than 1000px, then don't fix the width of the page, but fix that you only get the right side of the page
   
   useEffect(() => {
 		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/march-madness-2025")
@@ -13,20 +15,26 @@ function App() {
 		.then(res => setData(res.data['article.aml']))
   }, [])
 
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 700);
+    setIsSmallerScreen(window.innerWidth <= 1000);
+  }, [])
+
+  const mobileScreenD = "M0.8125 29.4574C35.4296 -29.2025 228.381 19.0244 253.36 21.3737C278.34 23.723 380.218 41.041 429.593 38.5779C496.074 35.2614 531.281 29.8721 531.281 29.8721V728.08C531.281 728.08 496.074 733.469 429.593 736.786C380.218 739.249 278.34 721.931 253.36 719.581C228.381 717.232 35.4296 669.005 0.8125 727.665V29.4574Z";
+  const mobileScreenViewBox = "0 0 532 738";
+
   const Page = React.forwardRef((props, ref) => {
     return (
       <div className="demoPage" ref={ref} style={{ width: '100%', height: '100%' }}>
         <svg
           width="100%"
           height="100%"
-          viewBox={props.viewBox}
+          viewBox={isMobile ? mobileScreenViewBox : props.viewBox}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d={props.d} fill={props.fill} stroke={props.stroke}/>
+          <path d={isSmallerScreen ? mobileScreenD : props.d} fill={props.fill} stroke={props.stroke}/>
         </svg>
-  
-        {/* <p>Page {props.number}</p> */}
       </div>
     );
   });
@@ -35,8 +43,8 @@ function App() {
     <div className="App">
       <Header/>
       <div className="flipbook-container">
-      {/* <HTMLFlipBook width="100%" height="100%" style={{ width: '100%', height: '100%' }}> */}
-      <HTMLFlipBook width={533} height={739}>
+      <HTMLFlipBook width={isMobile ? 300 : 533} height={739}>
+      {/* <HTMLFlipBook width={isMobile ? "100%" : 533} height={isMobile ? 500 : 739} mobileScrollSupport={true} useTouch={true}> */}
           {/* <div className="demoPage">Page 1</div>
           <div className="demoPage">Page 2</div>
           <div className="demoPage">Page 3</div>

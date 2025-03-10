@@ -43,7 +43,7 @@ function App() {
     <div className="App">
       <Header/>
       <div className="flipbook-container">
-      <HTMLFlipBook width={isMobile ? 300 : 533} height={739}>
+      <HTMLFlipBook width={isMobile ? 300 : 533} height={isMobile ? 400 : 739}>
       {/* <HTMLFlipBook width={isMobile ? "100%" : 533} height={isMobile ? 500 : 739} mobileScrollSupport={true} useTouch={true}> */}
           {/* <div className="demoPage">Page 1</div>
           <div className="demoPage">Page 2</div>

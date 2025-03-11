@@ -22,8 +22,8 @@ const FlipBookContainer = styled.div`
 `;
 
 const StyledFlipBook = styled(HTMLFlipBook)`
-  width: 1184px;
-  height: 842px;
+  width: 72.43994rem;
+  height: 51.48738rem;
 `;
 
 const FlipBook = () => {
@@ -45,10 +45,11 @@ const FlipBook = () => {
           // Render FlipBook Only for ArticlePage
           <FlipBookContainer>
             <StyledFlipBook ref={flipBookRef} width={1184} height={842} showCover={true}>
-              <div><ArticlePage pageNumber={1} content="Article Introduction" /></div>
-              <div><ArticlePage pageNumber={2} content="Main Content - Page 1" /></div>
-              <div><ArticlePage pageNumber={3} content="Main Content - Page 2" /></div>
-              <div><ArticlePage pageNumber={4} content="Conclusion" /></div>
+                {Array.from({ length: 10 }, (_, index) => (
+                <div key={index}>
+                    <ArticlePage pageNumber={index + 1} content={`Content for Page ${index + 1}`} />
+                </div>
+                ))}
             </StyledFlipBook>
           </FlipBookContainer>
         )}

@@ -12,6 +12,10 @@ const TitleContainer = styled.div`
   height: 121.5625rem;
   overflow: hidden;
   background-color: #9BBDF4;
+  @media (max-width: 1000px) {
+    width: 48rem; // Set width to a percentage of the viewport for mobile
+    height: 70rem; // Adjust height for mobile devices
+  }
 `;
 
 const FlipBookContainer = styled.div`
@@ -21,11 +25,20 @@ const FlipBookContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #9BBDF4;
+  @media (max-width: 1000px) {
+    justify-content: right;
+    width: 48rem; // Set width to a percentage of the viewport for mobile
+    height: 55rem; // Adjust height for mobile devices
+  }
 `;
 
 const StyledFlipBook = styled(HTMLFlipBook)`
   width: 72.43994rem;
   height: 51.48738rem;
+  @media (max-width: 1000px) {
+    width: 48rem; // Set width to a percentage of the viewport for mobile
+    height: 70rem; // Adjust height for mobile devices
+  }
 `;
 
 const FlipBook = () => {

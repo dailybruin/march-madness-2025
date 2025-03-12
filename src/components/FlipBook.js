@@ -11,6 +11,7 @@ const TitleContainer = styled.div`
   width: 92.375rem;
   height: 121.5625rem;
   overflow: hidden;
+  background-color: #9BBDF4;
 `;
 
 const FlipBookContainer = styled.div`
@@ -19,6 +20,7 @@ const FlipBookContainer = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-color: #9BBDF4;
 `;
 
 const StyledFlipBook = styled(HTMLFlipBook)`

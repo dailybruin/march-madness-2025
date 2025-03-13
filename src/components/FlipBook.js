@@ -3,6 +3,7 @@ import HTMLFlipBook from 'react-pageflip';
 import TitlePage from "./TitlePage.js";
 import ArticlePage from "./ArticlePage.js";
 import styled from "styled-components";
+import Background from "../images/background.png";
 
 const TitleContainer = styled.div`
   display: flex;
@@ -11,7 +12,10 @@ const TitleContainer = styled.div`
   width: 92.375rem;
   height: 121.5625rem;
   overflow: hidden;
-  background-color: #9BBDF4;
+  background-image: url(${Background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1000;
   @media (max-width: 1000px) {
     width: 48rem; // Set width to a percentage of the viewport for mobile
     height: 70rem; // Adjust height for mobile devices
@@ -24,7 +28,10 @@ const FlipBookContainer = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #9BBDF4;
+  background-image: url(${Background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1000;
   @media (max-width: 1000px) {
     justify-content: right;
     width: 48rem; // Set width to a percentage of the viewport for mobile
@@ -41,7 +48,15 @@ const StyledFlipBook = styled(HTMLFlipBook)`
   }
 `;
 
-const FlipBook = () => {
+const RedBox = () => {
+  return (
+    <div style={{ backgroundColor: 'red', padding: '20%', borderRadius: '8px', width: '100%'}}>
+      <p>SPACE</p>
+    </div>
+  );
+};
+
+const FlipBook = ({ articles }) => {
     const [showFlipBook, setShowFlipBook] = useState(false); // Control visibility of FlipBook
     const flipBookRef = useRef(null);
   
@@ -53,7 +68,10 @@ const FlipBook = () => {
       <>
         {!showFlipBook ? (
           // Render TitlePage First
-          <TitleContainer>
+          <TitleContainer style={{ display: 'flex', flexDirection: 'column' }}>
+            <RedBox/>
+            <br/>
+            <br/>
             <TitlePage onTabClick={handleTabClick} />
           </TitleContainer>
         ) : (
@@ -65,6 +83,11 @@ const FlipBook = () => {
                     <ArticlePage pageNumber={index + 1} content={`Content for Page ${index + 1}`} />
                 </div>
                 ))}
+                {/* {articles.map((article, index) => {
+                  <div key={index}>
+                    <ArticlePage pageNumber={index + 1} props={article} />
+                  </div>
+                })} */}
             </StyledFlipBook>
           </FlipBookContainer>
         )}

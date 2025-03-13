@@ -23,7 +23,7 @@ function App() {
   return data && (
     <div className="App">
       <Header/>
-      <FlipBook />
+      <FlipBook articles={data.articles}/>
       <Footer/>
     </div>
   );

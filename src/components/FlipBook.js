@@ -34,17 +34,22 @@ const FlipBookContainer = styled.div`
   z-index: 1000;
   @media (max-width: 1000px) {
     justify-content: right;
-    width: 48rem; // Set width to a percentage of the viewport for mobile
-    height: 55rem; // Adjust height for mobile devices
+    // width: 48rem; // Set width to a percentage of the viewport for mobile
+    // height: 55rem; // Adjust height for mobile devices
+    width: 100%;
+    height: auto;
   }
 `;
 
 const StyledFlipBook = styled(HTMLFlipBook)`
   width: 72.43994rem;
   height: 51.48738rem;
+  object-fit: contain;
   @media (max-width: 1000px) {
-    width: 48rem; // Set width to a percentage of the viewport for mobile
-    height: 70rem; // Adjust height for mobile devices
+    // width: 48rem; // Set width to a percentage of the viewport for mobile
+    // height: 70rem; // Adjust height for mobile devices
+    width: 100%;
+    height: auto;
   }
 `;
 
@@ -57,17 +62,16 @@ const RedBox = () => {
 };
 
 const FlipBook = ({ articles }) => {
-    const [showFlipBook, setShowFlipBook] = useState(false); // Control visibility of FlipBook
+    const [showFlipBook, setShowFlipBook] = useState(false); 
     const flipBookRef = useRef(null);
   
     const handleTabClick = () => {
-      setShowFlipBook(true); // Show the FlipBook when tab is clicked
+      setShowFlipBook(true);
     };
   
     return (
       <>
         {!showFlipBook ? (
-          // Render TitlePage First
           <TitleContainer style={{ display: 'flex', flexDirection: 'column' }}>
             <RedBox/>
             <br/>
@@ -75,7 +79,6 @@ const FlipBook = ({ articles }) => {
             <TitlePage onTabClick={handleTabClick} />
           </TitleContainer>
         ) : (
-          // Render FlipBook Only for ArticlePage
           <FlipBookContainer>
             <StyledFlipBook ref={flipBookRef} width={1184} height={842} showCover={true}>
                 {Array.from({ length: 10 }, (_, index) => (

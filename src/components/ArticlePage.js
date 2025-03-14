@@ -20,23 +20,26 @@ import MobilePage8 from "../images/mobilePage8.png";
 import MobilePage9 from "../images/mobilePage9.png";
 import MobilePage10 from "../images/mobilePage10.png";
 import MobilePage11 from "../images/mobilePage11.png";
+import Article from "../components/Article.js";
+import MobileArticle from "../components/MobileArticle.js";
 
-
-const RedBox = ({pageNumber, color}) => {
+const MobileRedBox = ({ pageNumber, color, articles }) => {
   return (
-    <div style={{ backgroundColor: color, width: '10%', top: '20%', left: '10%', padding: '10%', color: 'white', textAlign: 'center', position: 'absolute'}}>
-      <p>TEST to see if you can place contents on top of flipBookPage</p>
+    <div style={{ backgroundColor: color, width: '20em', height: '30em', top: '20%', right: '-3em', color: 'white', textAlign: 'center', position: 'absolute' }}>
+      <MobileArticle article={articles[pageNumber]}/>
       <p>page: {pageNumber}</p>
     </div>
   );
 };
 
-const MobileRedBox = ({pageNumber, color}) => {
+const Desktop = ({ pageNumber, color, articles }) => {
   return (
-    <div style={{ backgroundColor: color, width: '10%', top: '20%', left: '40%', padding: '10%', color: 'white', textAlign: 'center', position: 'absolute'}}>
-      <p>MOBILE TEST to see if you can place contents on top of flipBookPage</p>
-      <p>page: {pageNumber}</p>
+    <>
+    <div style={{ width: '10%', top: '-5%', left: '0%', padding: '10%', color: 'white', textAlign: 'center', position: 'absolute' }}>
+      <Article article={articles[pageNumber]}/>
     </div>
+    <p>page: {pageNumber}</p>
+    </>
   );
 };
 
@@ -67,29 +70,48 @@ const mobilePageMap = {
   11: MobilePage11
 };
 
-const ArticlePage = ({ pageNumber }) => {
-  const [ isMobile, setIsMobile ] = useState(null);
+const ArticlePage = ({ pageNumber, articles }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 700);
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // Update breakpoint
+    };
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
   }, []);
 
   const flipBookPage = isMobile ? mobilePageMap[pageNumber] : pageMap[pageNumber];
-  // const flipBookPage = mobilePageMap[pageNumber];
-  const colorMobileCheck = isMobile ? 'red' : 'blue';
+  const colorMobileCheck = isMobile ? 'pink' : 'blue';
+
   return (
-    <div style={{ position: 'relative', width: '1184px', height: '842px', overflow: 'hidden'}}>
+    <div style={{ position: 'relative', width: '1184px', height: '842px', overflow: 'hidden' }}>
       {flipBookPage ? (
         <>
-        <img src={flipBookPage} alt={`Page ${pageNumber}`} 
-        style={{ width: isMobile ? '50%' : '100%', height: isMobile ? '50%' : '100%', objectFit: 'contain', margin: '0 5%', display: 'block' }}/>
-        {isMobile ? 
-          (<RedBox pageNumber={pageNumber} color={colorMobileCheck}/>) : (
-          (<MobileRedBox pageNumber={pageNumber} color={colorMobileCheck}/>)
-        )}
+          <img
+            src={flipBookPage}
+            alt={`Page ${pageNumber}`}
+            style={{
+              width: isMobile ? '50%' : '100%',
+              height: isMobile ? '50%' : '100%',
+              objectFit: 'contain',
+              margin: '0 5%',
+              display: 'block',
+            }}
+          />
+          {isMobile ? (
+            <MobileRedBox pageNumber={pageNumber} color={colorMobileCheck} articles={articles}/>
+          ) : (
+            <>
+            <Desktop pageNumber={pageNumber} color={colorMobileCheck} articles={articles}/>
+            </>
+          )}
         </>
       ) : (
-        <p>No page associated with the current ${pageNumber}</p>
+        <p>No page associated with the current {pageNumber}</p>
       )}
     </div>
   );

@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-// Outer blue background
 
-// Full-page Background
 
 // Book Container (Now just a cream container instead of book background)
 const BookContainer = styled.div`
   width: 85vw;
-  max-width: 1000px;
-  background: transparent; 
+  height: 40em;
+  max-width: 950px;
+  //background: red; 
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
   padding: 5vh 3vw;
   border-radius: 8px; /* Slight rounding to match book style */
@@ -35,7 +34,9 @@ const LeftPage = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2vh 2vw;
+  padding: 2vh 0vw;
+  margin-left: -2em;
+  margin-top:-2em;
 `;
 
 // Title (Responsive size)
@@ -44,7 +45,7 @@ const Title = styled.h1`
   font-family: "Baskervville", serif;
   font-weight: bold;
   color: #5a3e2b;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
   line-height: 1.2;
   word-wrap: break-word;
 `;
@@ -90,6 +91,7 @@ const RightPage = styled.div`
   overflow-y: auto;
   max-height: 60vh;
   padding: 2vh;
+  margin-right:-2em;
 `;
 
 // Responsive Design for Mobile

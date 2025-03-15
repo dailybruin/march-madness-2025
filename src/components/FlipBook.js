@@ -4,6 +4,7 @@ import TitlePage from "./TitlePage.js";
 import ArticlePage from "./ArticlePage.js";
 import styled from "styled-components";
 import Background from "../images/background.png";
+import Landing from "../components/Landing.js";
 
 const TitleContainer = styled.div`
   display: flex;
@@ -53,14 +54,6 @@ const StyledFlipBook = styled(HTMLFlipBook)`
   }
 `;
 
-const RedBox = () => {
-  return (
-    <div style={{ backgroundColor: 'red', padding: '20%', borderRadius: '8px', width: '100%'}}>
-      <p>SPACE</p>
-    </div>
-  );
-};
-
 const FlipBook = ({ articles }) => {
     const [showFlipBook, setShowFlipBook] = useState(false); 
     const flipBookRef = useRef(null);
@@ -73,10 +66,10 @@ const FlipBook = ({ articles }) => {
       <>
         {!showFlipBook ? (
           <TitleContainer style={{ display: 'flex', flexDirection: 'column' }}>
-            <RedBox/>
+            <Landing/>
             <br/>
             <br/>
-            <TitlePage onTabClick={handleTabClick} />
+            <TitlePage onTabClick={handleTabClick} articles={articles}/>
           </TitleContainer>
         ) : (
           <FlipBookContainer>

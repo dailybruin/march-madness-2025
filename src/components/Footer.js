@@ -9,7 +9,7 @@ import { mediaQueries } from '../shared/config';
 
 
 const Container = styled.div`
-	background-color: black;
+	background-color: #9BBDF4;
 	height: auto;
 	color: white;
 	padding: 60px 0 10px 0;
@@ -43,14 +43,14 @@ const Socials = styled.div`
 const Footer = () => {
     return (
         <Container>
-        <h1>DAILY BRUIN</h1>
+        <h1 style={{ color: "#593012" }}>DAILY BRUIN</h1>
         <Socials>
           <a href="https://www.instagram.com/dailybruin" target="_blank" rel="noreferrer"><img src={insta} alt=""/></a>
           <a href="https://www.facebook.com/dailybruin" target="_blank" rel="noreferrer"><img src={fb} alt=""/></a>
           <a href="https://www.twitter.com/dailybruin" target="_blank" rel="noreferrer"><img src={twitter} alt=""/></a>
           <a href="https://www.tiktok.com/@dailybruin" target="_blank" rel="noreferrer"><img src={tiktok} alt=""/></a>
           <a href="http://eepurl.com/cFEiZX" target="_blank" rel="noreferrer"><img src={email} alt=""/></a>
-          <p>Built with Suzy’s ♥ in Kerckhoff 118 by [developers]. Designed by [designers].</p>
+          <p style={{ color: "#593012" }}>Built with Suzy’s ♥ in Kerckhoff 118 by [developers]. Designed by Vienna Vipond.</p>
         </Socials>
     </Container>
     )

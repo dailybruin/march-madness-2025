@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import Page1 from "../images/page1.png";
 import Page2 from "../images/page2.png";
 import Page3 from "../images/page3.png";
@@ -23,11 +24,16 @@ import MobilePage11 from "../images/mobilePage11.png";
 import Article from "../components/Article.js";
 import MobileArticle from "../components/MobileArticle.js";
 
+const Interactive = styled.div`
+  width: 100em;
+  height: 100em;
+  background-color: red;
+`
+
 const MobileRedBox = ({ pageNumber, color, articles }) => {
   return (
-    <div style={{ backgroundColor: color, width: '20em', height: '30em', top: '20%', right: '-3em', color: 'white', textAlign: 'center', position: 'absolute' }}>
+    <div style={{ backgroundColor: color, width: '80%', height: '30em', top: '-9em', right: '-25em', color: 'white', textAlign: 'center', position: 'absolute' }}>
       <MobileArticle article={articles[pageNumber]}/>
-      <p>page: {pageNumber}</p>
     </div>
   );
 };
@@ -35,10 +41,9 @@ const MobileRedBox = ({ pageNumber, color, articles }) => {
 const Desktop = ({ pageNumber, color, articles }) => {
   return (
     <>
-    <div style={{ width: '10%', top: '-5%', left: '0%', padding: '10%', color: 'white', textAlign: 'center', position: 'absolute' }}>
+    <div style={{ width: '10%', top: '-15%', left: '0%', padding: '10%', color: 'white', textAlign: 'center', position: 'absolute' }}>
       <Article article={articles[pageNumber]}/>
     </div>
-    <p>page: {pageNumber}</p>
     </>
   );
 };
@@ -75,7 +80,7 @@ const ArticlePage = ({ pageNumber, articles }) => {
 
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Update breakpoint
+      setIsMobile(window.innerWidth <= 900); // Update breakpoint
     };
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
@@ -85,7 +90,6 @@ const ArticlePage = ({ pageNumber, articles }) => {
   }, []);
 
   const flipBookPage = isMobile ? mobilePageMap[pageNumber] : pageMap[pageNumber];
-  const colorMobileCheck = isMobile ? 'pink' : 'blue';
 
   return (
     <div style={{ position: 'relative', width: '1184px', height: '842px', overflow: 'hidden' }}>
@@ -95,18 +99,20 @@ const ArticlePage = ({ pageNumber, articles }) => {
             src={flipBookPage}
             alt={`Page ${pageNumber}`}
             style={{
-              width: isMobile ? '50%' : '100%',
-              height: isMobile ? '50%' : '100%',
+              width: isMobile ? '100em' : '100%',
+              height: isMobile ? '90%' : '100%',
               objectFit: 'contain',
               margin: '0 5%',
               display: 'block',
             }}
           />
           {isMobile ? (
-            <MobileRedBox pageNumber={pageNumber} color={colorMobileCheck} articles={articles}/>
+            <>
+            <MobileRedBox pageNumber={pageNumber} articles={articles}/>
+            </>
           ) : (
             <>
-            <Desktop pageNumber={pageNumber} color={colorMobileCheck} articles={articles}/>
+            <Desktop pageNumber={pageNumber} articles={articles}/>
             </>
           )}
         </>

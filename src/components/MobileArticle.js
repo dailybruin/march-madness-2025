@@ -6,16 +6,15 @@ import styled from "styled-components";
 
 // Book Container (Now just a cream container instead of book background)
 const BookContainer = styled.div`
-  width: 85vw;
-  max-width: 1000px;
+  width: 100vw;
   background: transparent; 
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
   padding: 5vh 3vw;
   border-radius: 8px; /* Slight rounding to match book style */
   display: flex;
-  flex-direction: column;
   align-items: center;
   position: relative;
+  top: 5em;
 `;
 
 // Content inside the book
@@ -24,7 +23,7 @@ const BookContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 6vh 5vw;
+  padding: 6vh 2vw;
   position: relative;
 `;
 
@@ -40,7 +39,7 @@ const LeftPage = styled.div`
 
 // Title (Responsive size)
 const Title = styled.h1`
-  font-size: clamp(1.6rem, 4vw, 2.5rem); /* ✅ Shrinks for mobile */
+  font-size: 2vh; /* ✅ Shrinks for mobile */
   font-family: "Baskervville", serif;
   font-weight: bold;
   color: #5a3e2b;
@@ -81,22 +80,20 @@ const Caption = styled.p`
 
 // Right Page (Article Text)
 const RightPage = styled.div`
-  width: 45%;
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  width: 80%;
+  font-size: 1vh;
   font-family: "Baskervville", serif;
   color: #222;
   line-height: 1.6;
   text-align: left;
   overflow-y: auto;
   max-height: 60vh;
-  padding: 2vh;
 `;
 
 // Responsive Design for Mobile
 const MobileStyles = styled.div`
   @media screen and (max-width: 900px) {
     ${BookContent} {
-      flex-direction: column;
       align-items: center;
       padding: 4vh 5vw;
     }
@@ -125,12 +122,10 @@ const MobileArticle = ({ article }) => {
                 )}
               </ArticleImage>
               <Caption>Space for caption here</Caption>
+              <RightPage>{article?.article_text || "Loading article text..."}</RightPage>
             </LeftPage>
 
-            {/* Right Page: Article Text */}
-            <RightPage>
-              {article?.article_text || "Loading article text..."}
-            </RightPage>
+           
           </BookContent>
         </BookContainer>
     </>

@@ -10,6 +10,7 @@ import Page7 from "../images/page7.png";
 import Page8 from "../images/page8.png";
 import Page9 from "../images/page9.png";
 import Page10 from "../images/page10.png";
+import Page11 from "../images/page10.png";
 import MobilePage1 from "../images/mobilePage1.png";
 import MobilePage2 from "../images/mobilePage2.png";
 import MobilePage3 from "../images/mobilePage3.png";
@@ -25,9 +26,11 @@ import Article from "../components/Article.js";
 import MobileArticle from "../components/MobileArticle.js";
 
 const Interactive = styled.div`
-  width: 100em;
-  height: 100em;
-  background-color: red;
+  width: 60em;
+  height: 40em;
+  margin-top: 5em;
+  background-color: #D9D9D9;
+  color: black;
 `
 
 const MobileRedBox = ({ pageNumber, color, articles }) => {
@@ -42,7 +45,7 @@ const Desktop = ({ pageNumber, color, articles }) => {
   return (
     <>
     <div style={{ width: '10%', top: '-15%', left: '0%', padding: '10%', color: 'white', textAlign: 'center', position: 'absolute' }}>
-      <Article article={articles[pageNumber]}/>
+    {pageNumber === 10 ? <Interactive>Interactive goes here</Interactive>: <Article article={articles[pageNumber]} />}
     </div>
     </>
   );
@@ -59,6 +62,7 @@ const pageMap = {
   8: Page8,
   9: Page9,
   10: Page10,
+  11: Page11,
 };
 
 const mobilePageMap = {

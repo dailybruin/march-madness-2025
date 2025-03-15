@@ -10,7 +10,7 @@ const TitleContainer = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
-  width: 92.375rem;
+  width: 100%;
   height: 121.5625rem;
   overflow: hidden;
   background-image: url(${Background});

@@ -56,29 +56,72 @@ const StyledFlipBook = styled(HTMLFlipBook)`
 
 const FlipBook = ({ articles }) => {
     const [showFlipBook, setShowFlipBook] = useState(false); 
+    const [current, setCurrent] = useState(null);
     const flipBookRef = useRef(null);
   
     const handleTabClick = () => {
       setShowFlipBook(true);
     };
+
+    const handleArticleClick = (articleItem) => {
+      setCurrent(articleItem);
+      console.log(articleItem);
+      // flipBookRef.current.pageFlip(pageNumber);
+    };
+
+    const articleMap = {
+      9: "sp.wbb.pre/seeding.3.17.25.insert", // there is no page associated with the first article in the flipbook
+      0: "sp.mbb.pre/seeding.3.17.25.insert",
+      1: "sp.mbb.mackfeature.3.16.25.insert",
+      2: "sp.wbb.swearbysabrina.3.13.25.insert",
+      3: "sp.mbb.brosfeature.3.15.25.insert",
+      4: "sp.mbb.dizonsdisposition.3.17.25",
+      5: "sp.wbb.closenbk.3.16.25.insert",
+      6: "sp.mbb.ncaapredictions.3.17.25.insert",
+      7: "sp.wbb.ncaapredictions.3.17.25.insert",
+      8: "spread",
+    }
   
     return (
       <>
-        {!showFlipBook ? (
+        {(!showFlipBook && !current)? (
           <TitleContainer style={{ display: 'flex', flexDirection: 'column' }}>
             <Landing/>
             <br/>
             <br/>
-            <TitlePage onTabClick={handleTabClick} articles={articles}/>
+            <TitlePage onTabClick={handleTabClick} articles={articles} onArticleClick={handleArticleClick}/>
           </TitleContainer>
         ) : (
           <FlipBookContainer>
-            <StyledFlipBook ref={flipBookRef} width={1184} height={842} showCover={true}>
-                {Array.from({ length: 10 }, (_, index) => (
-                <div key={index}>
-                    <ArticlePage pageNumber={index + 1} content={`Content for Page ${index + 1}`} articles={articles}/>
-                </div>
-                ))}
+            <StyledFlipBook ref={flipBookRef} width={1184} height={842} showCover={true} currentPage={current}>
+                {Array.from({ length: 10 }, (_, index) => {
+                  // console.log("Type index: " + typeof articleMap[index]);
+                  // console.log("Type current: " + typeof current.article_title);
+                  // console.log("articleMap: " + articleMap[index]);
+                  // console.log("current: " + current.article_title);
+                  if (!current) {
+                    // console.log("no current");
+                    // console.log(index);
+                    // console.log(articleMap[index]);
+                    return (
+                      <div key={index}>
+                        <ArticlePage pageNumber={index+1} content={`Content for Page ${index+1}`} articles={articles} />
+                      </div>
+                    );
+                  }
+                  
+                  if (articleMap[index] === current.article_title) {
+                    console.log("articleMap: " + articleMap[index]);
+                    console.log("current: " + current.article_title);
+                    return (
+                      <div key={index}>
+                        <ArticlePage pageNumber={index + 1} content={`Content for Page ${index + 1}`} articles={articles} />
+                      </div>
+                    );
+                  }
+
+                  return [];
+                })}
             </StyledFlipBook>
           </FlipBookContainer>
         )}

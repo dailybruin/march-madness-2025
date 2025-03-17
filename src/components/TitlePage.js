@@ -80,7 +80,13 @@ const MobileStyles = styled.div`
 `;
 
 
-const TitlePage = ({ onTabClick, articles }) => {
+const TitlePage = ({ onTabClick, articles, onArticleClick }) => {
+  const handleArticleClick = (article) => {
+    if (onArticleClick) {
+      onArticleClick(article);
+    }
+  };
+
   return (
     <>
     <svg width="1429" height="1949" viewBox="0 0 1429 1949" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -180,8 +186,9 @@ const TitlePage = ({ onTabClick, articles }) => {
         <ArticlesContainer>
           {Array.isArray(articles) && articles.length > 0 ? (
             articles.map((article, index) => (
-              <ArticleItem key={index}>
-                <a  href={article.article_url}  target="_blank"  rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <ArticleItem key={index} onClick={() => handleArticleClick(article)}>
+                {/* <a  href={article.article_url}  target="_blank"  rel="noopener noreferrer" style={{ textDecoration: 'none' }}> */}
+                <a href="#!" style={{ textDecoration: 'none' }}>
                 <Title>{article.article_title}</Title>
                 <Byline>by {article.article_byline}</Byline>
                 </a>

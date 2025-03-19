@@ -60,3 +60,175 @@ html, body {
   position: relative;
   /* background-color: #f0f0f0; */
 }
+
+/* -----------------------------------   Interactive styling ----------------------------- */
+
+.Interactive {
+  width: 1205px;
+  transform: scale(0.8);
+  transform-origin: 0 0;
+}
+.Bracket {
+  width: 100%;
+  position: relative;
+  clear: both;
+}
+.ToggleButton {
+  float: center;
+  justify-content: center;
+}
+
+.slot {
+  z-index: 1000;
+}
+
+.rlabels {
+  position: relative;
+}
+
+.column {
+  float: left;
+  margin-left: 5px;
+  position: relative;
+}
+
+.slot, .slotnohover {
+  width: 100px;
+  height: 10px;
+  padding: 3px;
+  border: 1px solid #000000;
+  font: 9.9px Sen;
+  background-color: #ffffff;
+}
+
+.sen-font {
+  font-family: "Sen", sans-serif;
+  font-style: normal;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 10px;
+  position: relative;
+}
+
+
+.rlabels {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.rlabel {
+  position: absolute;
+  top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+#col1, #col11 { position: relative; top:0px; }
+#col2, #col10 { position: relative; top:9px; }
+#col3, #col9 { position: relative; top:30px; }
+#col4, #col8 { position: relative; top:74px; }
+#col5, #col7 { position: relative; top: 159px; }
+
+#col3, #col4, #col5 { margin-left: -35px; }
+#col7, #col8, #col9 { margin-right: -30px; }
+
+#col2 .slot, #col10 .slot { margin-bottom: 24px; }
+#col3 .slot, #col9 .slot { margin-bottom: 66px; }
+#col4 .slot, #col8 .slot { margin-bottom: 151px; }
+#col5 .slot, #col7 .slot { margin-bottom: 320px; }
+#col6 .slot {     
+  float: left;
+  margin-right: 2px;
+  text-align: center;
+}
+
+#col6 { margin-top: 40px; margin-left: -32px; margin-right: -31px; position: relative; top: 120px; z-index: 130; }
+
+
+.spacer15 { height: 0px }
+.spacer2 { height: 0px; }
+.spacer180 { height: 0px; }
+
+#col2 .slot, #col3 .slot, #col4 .slot, #col5 .slot {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+#col7 .slot, #col8 .slot, #col9 .slot, #col10 .slot{
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+#col6 .slot{
+  border-radius: 8px;
+}
+
+.vliner {
+  border-right: 1px solid #ccc;
+  z-index: 1;
+}
+.vlinel {
+  border-left: 1px solid #ccc;
+  z-index: 1;
+}
+#vlinec {
+  background: url('./images/vlinec.gif') repeat-y center;
+}
+hr {
+  color: #f00;
+  border: 0;
+  background-color: #ccc;
+  height: 1px;
+  width: 108px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+
+.winner {
+  border: 1px solid #999;
+}
+
+.winner:hover {
+  border: 1px solid #999;
+  cursor: auto;
+}
+
+#thetitle {
+  font: bold 18px Arial;
+  position: absolute;
+  text-align: center;
+  left: 350px;
+  top: -10px;
+  z-index: 101;
+}
+
+#firstfour {
+  width: 885px;
+  border-top: 1px dotted #CCC;
+  padding-top: 5px;
+  position: relative;
+  z-index: 110;
+}
+
+.ffmodule {
+  float: left;
+  border-right: 1px dotted #ccc;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+#col1, #col2, #col3, #col4, #col5 {
+  text-align: left;
+}
+
+#col7, #col8, #col9, #col10, #col11 {
+  text-align: right;
+}
+#col6 {
+  text-align: center;
+}

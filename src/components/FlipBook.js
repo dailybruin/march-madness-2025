@@ -76,7 +76,7 @@ const FlipBook = ({ articles }) => {
             <StyledFlipBook ref={flipBookRef} width={1184} height={842} showCover={true}>
                 {Array.from({ length: 10 }, (_, index) => (
                 <div key={index}>
-                    <ArticlePage pageNumber={index + 1} content={`Content for Page ${index + 1}`} articles={articles}/>
+                    <ArticlePage pageNumber={index+1} content={`Content for Page ${index + 1}`} articles={articles}/>
                 </div>
                 ))}
             </StyledFlipBook>

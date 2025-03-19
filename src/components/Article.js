@@ -60,9 +60,8 @@ const Byline = styled.p`
 
 // Image Placeholder (Scales dynamically)
 const ArticleImage = styled.div`
-  width: 75%;
-  max-width: 230px; /* ✅ Prevents it from getting too big */
-  height: clamp(100px, 12vw, 180px);
+  width: 100%;
+  height: 100%;
   background: #d8d8d8;
   display: flex;
   align-items: center;
@@ -117,8 +116,6 @@ const Article = ({ article }) => {
           <BookContent>
             {/* Left Page: Title, Byline, Image */}
             <LeftPage>
-              <Title>{article?.article_title || "Loading Title..."}</Title>
-              <Byline>{article?.article_byline || "Loading Byline..."}</Byline>
               <ArticleImage>
                 {article?.article_image ? (
                   <img src={article.article_image} alt="Article" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -131,6 +128,10 @@ const Article = ({ article }) => {
 
             {/* Right Page: Article Text */}
             <RightPage>
+            <a  href={article.article_url}  target="_blank"  rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <Title>{article?.article_title || "Loading Title..."}</Title>
+              </a>
+              <Byline>{article?.article_byline || "Loading Byline..."}</Byline>
               {article?.article_text || "Loading article text..."}
             </RightPage>
           </BookContent>

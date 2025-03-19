@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import Title from "../components/TitlePage.js";
 import Page1 from "../images/page1.png";
 import Page2 from "../images/page2.png";
 import Page3 from "../images/page3.png";
@@ -62,7 +63,6 @@ const pageMap = {
   8: Page8,
   9: Page9,
   10: Page10,
-  11: Page11,
 };
 
 const mobilePageMap = {
@@ -95,6 +95,13 @@ const ArticlePage = ({ pageNumber, articles }) => {
 
   const flipBookPage = isMobile ? mobilePageMap[pageNumber] : pageMap[pageNumber];
 
+  const [showFlipBook, setShowFlipBook] = useState(false); 
+    const flipBookRef = useRef(null);
+  
+    const handleTabClick = () => {
+      setShowFlipBook(true);
+    };
+
   return (
     <div style={{ position: 'relative', width: '1184px', height: '842px', overflow: 'hidden' }}>
       {flipBookPage ? (
@@ -106,19 +113,17 @@ const ArticlePage = ({ pageNumber, articles }) => {
               width: isMobile ? '100em' : '100%',
               height: isMobile ? '90%' : '100%',
               objectFit: 'contain',
-              margin: '0 5%',
+              margin: '0 3%',
               display: 'block',
             }}
           />
-          {isMobile ? (
-            <>
-            <MobileRedBox pageNumber={pageNumber} articles={articles}/>
-            </>
-          ) : (
-            <>
-            <Desktop pageNumber={pageNumber} articles={articles}/>
-            </>
-          )}
+          {pageNumber === 1 ? (
+                <Title onTabClick={handleTabClick} articles={articles}/> // This is your title page component, which will be displayed when pageNumber is 0
+            ) : isMobile ? (
+                <MobileRedBox pageNumber={pageNumber} articles={articles} />
+            ) : (
+                <Desktop pageNumber={pageNumber} articles={articles} />
+            )}
         </>
       ) : (
         <p>No page associated with the current {pageNumber}</p>

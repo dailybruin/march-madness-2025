@@ -59,9 +59,13 @@ const Byline = styled.p`
 // Image Placeholder (Scales dynamically)
 const ArticleImage = styled.div`
   width: 75%;
-  max-width: 230px; /* ✅ Prevents it from getting too big */
+  max-width: 230px; /* Prevents it from getting too big */
   height: clamp(100px, 12vw, 180px);
   background: #d8d8d8;
+  background-image: url('path_to_your_image.jpg');
+  background-size: cover; /* Ensures the image covers the container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +84,7 @@ const Caption = styled.p`
 
 // Right Page (Article Text)
 const RightPage = styled.div`
-  width: 80%;
+  width: 70%;
   font-size: 1vh;
   font-family: "Baskervville", serif;
   color: #222;

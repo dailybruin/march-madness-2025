@@ -1,5 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import Vid from "../images/March.mp4";
+
+const Video = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 
 
 const Container = styled.div`
@@ -30,6 +37,9 @@ z-index: 1;
 const Landing = ({ credits }) => {
   return (
     <Container>
+      <Video autoPlay loop muted playsInline>
+        <source src={Vid} type="video/mp4" />
+      </Video>
       <Credits>ILLO CREDIT WILL GO HEREEEEEEEEEEE</Credits>
     </Container>
   );

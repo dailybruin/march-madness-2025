@@ -6,7 +6,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup, {
     toggleButtonGroupClasses,
 } from '@mui/material/ToggleButtonGroup';
-import { useBracket } from '../BracketProvider';
+import { useBracket } from '../components/BracketProvider.jsx';
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     [`& .${toggleButtonGroupClasses.grouped}`]: {

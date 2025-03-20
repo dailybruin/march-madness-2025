@@ -111,9 +111,9 @@ const FlipBook = ({ articles }) => {
             showCover={true}
             onFlip={handlePageFlip} 
           >
-            {Array.from({ length: 10 }, (_, index) => (
+            {Array.from({ length: 11 }, (_, index) => (
               <div key={index}>
-                <ArticlePage pageNumber={index + 1} content={`Content for Page ${index + 1}`} articles={articles} />
+                <ArticlePage pageNumber={index+1} content={`Content for Page ${index+1}`} articles={articles} />
               </div>
             ))}
           </StyledFlipBook>

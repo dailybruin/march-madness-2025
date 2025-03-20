@@ -12,6 +12,7 @@ import Page8 from "../images/page8.png";
 import Page9 from "../images/page9.png";
 import Page10 from "../images/page10.png";
 import Page11 from "../images/page10.png";
+import Page12 from "../images/page10.png";
 import MobilePage1 from "../images/mobilePage1.png";
 import MobilePage2 from "../images/mobilePage2.png";
 import MobilePage3 from "../images/mobilePage3.png";
@@ -25,14 +26,9 @@ import MobilePage10 from "../images/mobilePage10.png";
 import MobilePage11 from "../images/mobilePage11.png";
 import Article from "../components/Article.js";
 import MobileArticle from "../components/MobileArticle.js";
+import { BracketProvider } from "../components/BracketProvider.jsx";
+import Interactive from "../components/Interactive.js";
 
-const Interactive = styled.div`
-  width: 60em;
-  height: 40em;
-  margin-top: 5em;
-  background-color: #D9D9D9;
-  color: black;
-`
 
 const MobileRedBox = ({ pageNumber, color, articles }) => {
   return (
@@ -46,7 +42,9 @@ const Desktop = ({ pageNumber, color, articles }) => {
   return (
     <>
     <div style={{ width: '10%', top: '-15%', left: '0%', padding: '10%', color: 'white', textAlign: 'center', position: 'absolute' }}>
-    {pageNumber === 10 ? <Interactive>Interactive goes here</Interactive>: <Article article={articles[pageNumber]} />}
+    {pageNumber === 10 ? <BracketProvider>
+          <Interactive />
+        </BracketProvider>: <Article article={articles[pageNumber]} />}
     </div>
     </>
   );
@@ -63,6 +61,8 @@ const pageMap = {
   8: Page8,
   9: Page9,
   10: Page10,
+  11: Page11,
+  12: Page12,
 };
 
 const mobilePageMap = {
@@ -122,7 +122,7 @@ const ArticlePage = ({ pageNumber, articles }) => {
             ) : isMobile ? (
                 <MobileRedBox pageNumber={pageNumber} articles={articles} />
             ) : (
-                <Desktop pageNumber={pageNumber} articles={articles} />
+                <Desktop pageNumber={pageNumber-1} articles={articles} />
             )}
         </>
       ) : (

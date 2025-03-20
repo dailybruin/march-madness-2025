@@ -50,7 +50,7 @@ const Footer = () => {
           <a href="https://www.twitter.com/dailybruin" target="_blank" rel="noreferrer"><img src={twitter} alt=""/></a>
           <a href="https://www.tiktok.com/@dailybruin" target="_blank" rel="noreferrer"><img src={tiktok} alt=""/></a>
           <a href="http://eepurl.com/cFEiZX" target="_blank" rel="noreferrer"><img src={email} alt=""/></a>
-          <p style={{ color: "#593012" }}>Built with Suzy’s ♥ in Kerckhoff 118 by [developers]. Designed by Vienna Vipond.</p>
+          <p style={{ color: "#593012" }}>Built with Suzy’s ♥ in Kerckhoff 118 by Kirsten Reign Cabalonga, Evelyn Cho, Jennifer Lee, Henry Nguyen, and Sakshi Thoutireddy. Designed by Vienna Vipond.</p>
         </Socials>
     </Container>
     )

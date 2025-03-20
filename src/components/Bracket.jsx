@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useBracket } from '../BracketProvider'
+import { useBracket } from "../components/BracketProvider.jsx";
 import useTeams from './Teams'
 
 function Bracket() {

@@ -4,7 +4,7 @@ const BracketContext = createContext();
 
 export const BracketProvider = ({ children }) => {
     const [editor, setEditor] = useState('Ira');
-    const [gen, setGen] = useState(["Men's"]);
+    const [gen, setGen] = useState(["Women's"]);
 
     return (
         <BracketContext.Provider value={{ editor, setEditor, gen, setGen }}>

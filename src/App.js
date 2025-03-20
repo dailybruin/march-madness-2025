@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FlipBook from "./components/FlipBook";
+import { BracketProvider } from "./components/BracketProvider";
 
 function App() {
   const [ data, setData ] = useState(null);
@@ -23,7 +24,9 @@ function App() {
   return data && (
     <div className="App">
       <Header/>
-        <FlipBook articles={data.articles}/>
+        <BracketProvider>
+          <FlipBook articles={data.articles}/>
+        </BracketProvider>
       <Footer/>
     </div>
   );

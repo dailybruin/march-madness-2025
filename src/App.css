@@ -82,6 +82,7 @@ html, body {
 
 .slot {
   z-index: 1000;
+  color: black;
 }
 
 .rlabels {
@@ -175,7 +176,8 @@ html, body {
 }
 .vlinel {
   border-left: 1px solid #ccc;
-  z-index: 1;
+  z-index: -1;
+  position: relative;
 }
 #vlinec {
   background: url('./images/vlinec.gif') repeat-y center;
@@ -193,11 +195,8 @@ hr {
 
 .winner {
   border: 1px solid #999;
-}
-
-.winner:hover {
-  border: 1px solid #999;
-  cursor: auto;
+  transform-origin: 50% 50%;
+  transform: scale(1.2) translateX(0px);
 }
 
 #thetitle {

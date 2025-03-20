@@ -7,6 +7,25 @@ import ToggleButtonGroup, {
     toggleButtonGroupClasses,
 } from '@mui/material/ToggleButtonGroup';
 import { useBracket } from '../components/BracketProvider.jsx';
+import { ThemeProvider, createTheme, useTheme } from '@mui/material/styles';
+
+
+const customTheme = createTheme({
+    palette: {
+        primary: {
+            light: '#ffffff',
+            main: '#593012',
+            dark: '#784C2D',
+            contrastText: '#ffffff',
+        },
+        secondary: {
+            light: '#ff7961',
+            main: '#f44336',
+            dark: '#ba000d',
+            contrastText: '#000',
+        },
+    },
+});
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     [`& .${toggleButtonGroupClasses.grouped}`]: {
@@ -24,7 +43,8 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     },
 }));
 
-export default function CustomizedDividers() {
+function CustomizedDividers() {
+    const theme = useTheme();
     const { editor, setEditor, gen, setGen } = useBracket();
 
     const handleGen = (event, newGen) => {
@@ -43,12 +63,16 @@ export default function CustomizedDividers() {
         <div>
             <Paper
                 elevation={0}
-                sx={(theme) => ({
+                sx={{
                     display: 'flex',
                     border: `1px solid ${theme.palette.divider}`,
+                    borderBottomLeftRadius: '16px',
+                    borderBottomRightRadius: '16px',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
-                })}
+                    backgroundColor: theme.palette.primary.main, // ✅ Now correctly applies custom theme
+                    color: theme.palette.primary.contrastText, // Ensures text is readable
+                }}
             >
                 <StyledToggleButtonGroup
                     size="small"
@@ -56,27 +80,82 @@ export default function CustomizedDividers() {
                     exclusive
                     onChange={handleEditor}
                     aria-label="editor"
+                    color={theme.palette.primary.contrastText}
                 >
-                    <ToggleButton value="Ira" aria-label="Ira">
+                    <ToggleButton value="Ira" aria-label="Ira" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
                         Ira
                     </ToggleButton>
-                    <ToggleButton value="Kai" aria-label="Kai">
+                    <ToggleButton value="Kai" aria-label="Kai" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
                         Kai
                     </ToggleButton>
-                    <ToggleButton value="Aaron" aria-label="Aaron">
+                    <ToggleButton value="Aaron" aria-label="Aaron" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
                         Aaron
                     </ToggleButton>
-                    <ToggleButton value="Connor" aria-label="Connor">
+                    <ToggleButton value="Connor" aria-label="Connor" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
                         Connor
                     </ToggleButton>
-                    <ToggleButton value="Sabrina" aria-label="Sabrina">
+                    <ToggleButton value="Sabrina" aria-label="Sabrina" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
                         Sabrina
                     </ToggleButton>
-                    <ToggleButton value="Una" aria-label="Una">
+                    <ToggleButton value="Una" aria-label="Una" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
                         Una
                     </ToggleButton>
                 </StyledToggleButtonGroup>
-                <Divider flexItem orientation="vertical" sx={{ mx: 0.5, my: 1 }} />
+                <Divider flexItem orientation="vertical" sx={{ mx: 0.5, my: 1, color: theme.palette.primary.contrastText}} />
                 <StyledToggleButtonGroup
                     size="small"
                     value={gen}
@@ -84,14 +163,40 @@ export default function CustomizedDividers() {
                     onChange={handleGen}
                     aria-label="gen"
                 >
-                    <ToggleButton value="Men's" aria-label="Men's">
-                        Men's
-                    </ToggleButton>
-                    <ToggleButton value="Women's" aria-label="Women's">
+                    <ToggleButton value="Women's" aria-label="Women's" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
                         Women's
+                    </ToggleButton>
+                    <ToggleButton value="Men's" aria-label="Men's" sx={{
+                        color: theme.palette.primary.contrastText, // Default text color
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.dark, // Custom selected color
+                            color: theme.palette.primary.contrastText, // Ensure readable text
+                        },
+                        '&.Mui-selected:hover': {
+                            backgroundColor: theme.palette.primary.dark, // Darker color when selected and hovered
+                        }, fontFamily:"Sen, sans-serif"  
+                    }}>
+                        Men's
                     </ToggleButton>
                 </StyledToggleButtonGroup>
             </Paper>
         </div>
     );
-} 
+}
+
+export default function ThemedCustomizedDividers() {
+    return (
+        <ThemeProvider theme={customTheme}>
+            <CustomizedDividers />
+        </ThemeProvider>
+    );
+}

@@ -25,13 +25,14 @@ const Credits = styled.div`
 position: absolute;
 bottom: 0px; 
 width: 150%;
-color: black;
+color: white;
 padding: 1em;
 font-family: Arial, sans-serif;
 font-size: 16px;
 font-weight: 400;
 line-height: 28.91px;
 z-index: 1; 
+left: 0;
 `;
 
 const Landing = ({ credits }) => {

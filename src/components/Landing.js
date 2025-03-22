@@ -5,7 +5,7 @@ import Vid from "../images/March.mp4";
 const Video = styled.video`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 
@@ -18,7 +18,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #d5e7f2;
+  background: black;
 `;
 
 const Credits = styled.div`

@@ -51,6 +51,7 @@ const Desktop = ({ pageNumber, color, articles }) => {
 };
 
 const pageMap = {
+  0: Page10,
   1: Page1,
   2: Page2,
   3: Page3,
@@ -117,7 +118,7 @@ const ArticlePage = ({ pageNumber, articles }) => {
               display: 'block',
             }}
           />
-          {pageNumber === 1 ? (
+          {pageNumber === 0 ? (
                 <Title onTabClick={handleTabClick} articles={articles}/> // This is your title page component, which will be displayed when pageNumber is 0
             ) : isMobile ? (
                 <MobileRedBox pageNumber={pageNumber} articles={articles} />

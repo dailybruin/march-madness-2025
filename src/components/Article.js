@@ -91,6 +91,7 @@ const RightPage = styled.div`
   max-height: 60vh;
   padding: 2vh;
   margin-right:-2em;
+  margin-top: -2em;
 `;
 
 // Responsive Design for Mobile
@@ -123,7 +124,7 @@ const Article = ({ article }) => {
                   "(A LOVELY PIC GOES HERE)"
                 )}
               </ArticleImage>
-              <Caption>Space for caption here</Caption>
+              {/*<Caption>Space for caption here</Caption>*/}
             </LeftPage>
 
             {/* Right Page: Article Text */}

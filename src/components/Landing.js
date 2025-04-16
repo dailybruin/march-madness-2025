@@ -41,7 +41,7 @@ const Landing = ({ credits }) => {
       <Video autoPlay loop muted playsInline>
         <source src={Vid} type="video/mp4" />
       </Video>
-      <Credits>ILLO CREDIT WILL GO HEREEEEEEEEEEE</Credits>
+      <Credits>Photos by Brandon Morquecho, Photo editor. Animation by Jeremy Chen, Photo editor.</Credits>
     </Container>
   );
 };

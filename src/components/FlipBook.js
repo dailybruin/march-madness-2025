@@ -55,7 +55,7 @@ const BackButton = styled.button`
 position: absolute;     
 width: 20%;
 height: 10em;
-left: 12em;
+left: 5%;
 top: 8em;
 padding: 0.5rem 1rem;
 background: transparent;

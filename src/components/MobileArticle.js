@@ -125,7 +125,7 @@ const MobileArticle = ({ article }) => {
                   "(A LOVELY PIC GOES HERE)"
                 )}
               </ArticleImage>
-              <Caption>Space for caption here</Caption>
+              {/*<Caption>Space for caption here</Caption>*/}
               <RightPage>{article?.article_text || "Loading article text..."}</RightPage>
             </LeftPage>
 

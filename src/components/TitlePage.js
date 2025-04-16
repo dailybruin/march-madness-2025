@@ -5,8 +5,7 @@ import Tabs from "../images/tabs.png";
 
 // Content inside the book
 const BookContent = styled.div`
-  width: 65%; 
-  max-width: 1100px; 
+  width: 90%; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,20 +16,18 @@ const BookContent = styled.div`
 const ArticlesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
-  gap: 2em;
+  gap: -2em;
   width: 100%; 
-  max-width: 1000px; 
 `;
 
 const ContentTitle = styled.div`
-  font-size: clamp(1.6rem, 4vw, 2.5rem); /* ✅ Shrinks for mobile */
+  font-size: clamp(1.6rem, 4vw, .5rem); /* ✅ Shrinks for mobile */
   font-family: "Baskervville", serif;
   font-weight: bold;
   color: #5a3e2b;
-  margin-bottom: 2rem;
   line-height: 1.2;
   word-wrap: break-word;
-  margin-top: 1em;
+  margin-top: .5em;
 `
 
 const ArticleItem = styled.div`
@@ -51,9 +48,9 @@ const ArticleItem = styled.div`
 `;
 const BlueColumn = styled.div`
   width: 15em;
-  height: 120em;
-  margin-right: -95em;
-  margin-top: -80em;
+  height: 100em;
+  margin-right: -80em;
+  margin-top: -90em;
   background-image: url(${Tabs}); 
   background-repeat: no-repeat;
   padding: 20px;
@@ -66,7 +63,7 @@ const BlueColumn = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(1.6rem, 4vw, 2.5rem); /* ✅ Shrinks for mobile */
+  font-size: clamp(1.6rem, 4vw, 2.12rem); /* ✅ Shrinks for mobile */
   font-family: "Baskervville", serif;
   font-weight: bold;
   color: #5a3e2b;
@@ -92,6 +89,7 @@ const MobileStyles = styled.div`
       grid-template-columns: 1fr; 
       gap: 2rem;
     }
+
   }
   
 `;

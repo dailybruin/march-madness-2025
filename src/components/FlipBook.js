@@ -67,7 +67,7 @@ border-radius: 5px;
 box-sizing: border-box;
 `;
 
-const FlipBook = ({ articles }) => {
+const FlipBook = ({ articles, credits }) => {
   const [showFlipBook, setShowFlipBook] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const flipBookRef = useRef(null);
@@ -88,7 +88,7 @@ const FlipBook = ({ articles }) => {
     <>
       {!showFlipBook ? (
         <TitleContainer style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
-          <Landing />
+          <Landing credits={credits}/>
           <br />
           <br />
           <TitlePage

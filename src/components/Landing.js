@@ -32,7 +32,7 @@ font-size: 16px;
 font-weight: 400;
 line-height: 28.91px;
 z-index: 1; 
-left: 0;
+left: -3;
 `;
 
 const Landing = ({ credits }) => {
@@ -41,7 +41,7 @@ const Landing = ({ credits }) => {
       <Video autoPlay loop muted playsInline>
         <source src={Vid} type="video/mp4" />
       </Video>
-      <Credits>Photos by Brandon Morquecho, Photo editor. Animation by Jeremy Chen, Photo editor.</Credits>
+      <Credits>{credits}</Credits>
     </Container>
   );
 };

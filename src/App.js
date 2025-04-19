@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <Header/>
         <BracketProvider>
-          <FlipBook articles={data.articles}/>
+          <FlipBook articles={data.articles} credits={data.landing_credits}/>
         </BracketProvider>
       <Footer/>
     </div>

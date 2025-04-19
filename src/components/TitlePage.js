@@ -5,7 +5,7 @@ import Tabs from "../images/tabs.png";
 
 // Content inside the book
 const BookContent = styled.div`
-  width: 90%; 
+  width: 93%; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +16,7 @@ const BookContent = styled.div`
 const ArticlesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
-  gap: -2em;
+  gap: -1.5em;
   width: 100%; 
 `;
 
@@ -49,8 +49,8 @@ const ArticleItem = styled.div`
 const BlueColumn = styled.div`
   width: 15em;
   height: 100em;
-  margin-right: -80em;
-  margin-top: -90em;
+  margin-right: -78em;
+  margin-top: -88em;
   background-image: url(${Tabs}); 
   background-repeat: no-repeat;
   padding: 20px;
